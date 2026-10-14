@@ -226,7 +226,7 @@ if (spotFrame && spotFrame.dataset.src) {
       spotFrame.src = spotFrame.dataset.src
       obs.disconnect()
     })
-  }, { rootMargin: '400px' }).observe(spotFrame)
+  }, { rootMargin: '800px' }).observe(spotFrame)
 }
 
 // ---------- sessions: muted autoplay, tap button for sound ----------
