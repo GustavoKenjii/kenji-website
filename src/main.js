@@ -180,10 +180,27 @@ function loop(time) {
 requestAnimationFrame(loop)
 
 // ---------- gallery flip cards (tap toggles on touch; hover handles desktop) ----------
+const gCards = [...document.querySelectorAll('.g-card')]
+let gFlipIdx = 0, gLastTap = 0
 if (matchMedia('(hover: none)').matches) {
-  document.querySelectorAll('.g-card').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('flipped'))
+  gCards.forEach(card => {
+    card.addEventListener('click', () => {
+      gCards.forEach(c => c.classList.remove('flipped'))
+      card.classList.add('flipped')
+      gFlipIdx = gCards.indexOf(card)
+      gLastTap = performance.now()
+    })
   })
+  // auto-flip every 3s while the gallery is on screen
+  let gVisible = false
+  const strip = document.getElementById('g-strip')
+  if (strip) new IntersectionObserver(([e]) => (gVisible = e.isIntersecting), { threshold: 0.2 }).observe(strip)
+  setInterval(() => {
+    if (!gVisible || document.hidden || performance.now() - gLastTap < 6000) return
+    gCards.forEach(c => c.classList.remove('flipped'))
+    gFlipIdx = (gFlipIdx + 1) % gCards.length
+    gCards[gFlipIdx].classList.add('flipped')
+  }, 3000)
 }
 
 // ---------- lazy Spotify: only load iframe near viewport ----------

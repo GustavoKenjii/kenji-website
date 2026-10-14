@@ -331,7 +331,10 @@ section{padding:0 var(--pad)}
   .spotify-grid{grid-template-columns:1fr}
   .lav-row{grid-template-columns:1fr}
   .lav-main{grid-template-columns:1fr}
-  .lav-side{padding-left:0}
+  .lav-side{padding-left:0;text-align:center;align-items:center}
+  .lav-stat-row{justify-content:center}
+  .lavenue .pill-light{align-self:center}
+  .lav-extra{align-self:center}
   .lav-grid{grid-template-columns:minmax(0,1fr)}
   .lav-wide{aspect-ratio:4/3}
   #to-top{width:60px;height:60px;font-size:20px}
