@@ -200,7 +200,7 @@ if (matchMedia('(hover: none)').matches) {
     gCards.forEach(c => c.classList.remove('flipped'))
     gFlipIdx = (gFlipIdx + 1) % gCards.length
     gCards[gFlipIdx].classList.add('flipped')
-  }, 3000)
+  }, 2000)
 }
 
 // ---------- lazy Spotify: only load iframe near viewport ----------
