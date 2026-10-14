@@ -268,7 +268,7 @@ section{padding:0 var(--pad)}
 /* gallery — 4-col staggered flip grid */
 .gallery{background:var(--ink);color:var(--paper);border-radius:0;margin-top:0;padding-bottom:32px}
 .g-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;overflow:visible;padding:8px 0;align-items:start;max-width:840px;margin:0 auto}
-.g-card{margin:0;perspective:1200px;min-width:0}
+.g-card{margin:0;perspective:1200px;min-width:0;cursor:pointer}
 .g-card:nth-child(3n+2){margin-top:16px}
 .g-card:nth-child(3n){margin-top:-6px}
 .g-flip{position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;cursor:pointer}
