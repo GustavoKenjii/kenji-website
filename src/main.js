@@ -179,6 +179,18 @@ function loop(time) {
 }
 requestAnimationFrame(loop)
 
+// ---------- about video: nudge autoplay (iOS needs the muted property + a retry) ----------
+const aboutVid = document.getElementById('about-vid')
+if (aboutVid) {
+  aboutVid.muted = true
+  aboutVid.defaultMuted = true
+  const kickAbout = () => { if (aboutVid.paused) aboutVid.play().catch(() => {}) }
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) kickAbout() }).observe(aboutVid)
+  // Low Power Mode blocks autoplay until first touch — start then
+  window.addEventListener('touchstart', kickAbout, { passive: true })
+  window.addEventListener('pointerdown', kickAbout, { passive: true })
+}
+
 // ---------- gallery flip cards (tap toggles on touch; hover handles desktop) ----------
 const gCards = [...document.querySelectorAll('.g-card')]
 let gFlipIdx = 0, gLastTap = 0
