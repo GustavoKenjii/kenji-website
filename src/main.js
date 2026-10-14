@@ -230,8 +230,8 @@ document.querySelectorAll('.sess-card').forEach(card => {
     } else film.pause()
   }, { rootMargin: '200px' }).observe(card)
   card.addEventListener('click', e => {
-    if (!live) return
     if (e.target.closest('.sess-toggle')) return // button handles sound only
+    // no 'live' gate: taps are user gestures, so play() works even where autoplay is blocked
     if (film.paused) { card.classList.remove('held'); film.play().catch(() => {}) }
     else { card.classList.add('held'); film.pause() }
   })
