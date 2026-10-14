@@ -203,16 +203,18 @@ if (matchMedia('(hover: none)').matches) {
       gLastTap = performance.now()
     })
   })
-  // auto-flip every 3s while the gallery is on screen
+  // auto-flip a random card every 1.5s while the gallery is on screen
   let gVisible = false
   const strip = document.getElementById('g-strip')
   if (strip) new IntersectionObserver(([e]) => (gVisible = e.isIntersecting), { threshold: 0.2 }).observe(strip)
   setInterval(() => {
-    if (!gVisible || document.hidden || performance.now() - gLastTap < 6000) return
+    if (!gVisible || document.hidden || performance.now() - gLastTap < 6000 || gCards.length < 2) return
+    let n = gFlipIdx
+    while (n === gFlipIdx) n = Math.floor(Math.random() * gCards.length)
+    gFlipIdx = n
     gCards.forEach(c => c.classList.remove('flipped'))
-    gFlipIdx = (gFlipIdx + 1) % gCards.length
-    gCards[gFlipIdx].classList.add('flipped')
-  }, 2000)
+    gCards[n].classList.add('flipped')
+  }, 1500)
 }
 
 // ---------- lazy Spotify: only load iframe near viewport ----------
