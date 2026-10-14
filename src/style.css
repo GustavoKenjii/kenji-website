@@ -319,15 +319,19 @@ section{padding:0 var(--pad)}
   .hero-sub{flex-direction:column;align-items:flex-start}
   .sess-head{flex-direction:column;align-items:flex-start;gap:8px}
   .sess-head .mono{padding-bottom:0}
+  .sess-head h2{white-space:normal}
+  .sess-intro{white-space:normal}
   .sess-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
   .sess-card{max-height:none}
   .g-strip{grid-template-columns:repeat(2,1fr);gap:12px}
   .g-card:nth-child(4n+2),.g-card:nth-child(4n+3),.g-card:nth-child(4n+4){margin-top:0}
   .g-card:nth-child(even){margin-top:20px}
   .foot-grid{grid-template-columns:1fr;align-items:center;justify-items:center}
+  .foot-base{justify-content:center;text-align:center}
   .spotify-grid{grid-template-columns:1fr}
   .lav-row{grid-template-columns:1fr}
   .lav-main{grid-template-columns:1fr}
+  .lav-side{padding-left:0}
   .lav-grid{grid-template-columns:minmax(0,1fr)}
   .lav-wide{aspect-ratio:4/3}
   #to-top{width:60px;height:60px;font-size:20px}
