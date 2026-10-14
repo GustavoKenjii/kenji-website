@@ -185,6 +185,16 @@
 
   </main>
 
+  <script>
+    // Failsafe: never trap visitors on the preloader, even if the main bundle fails.
+    setTimeout(function () {
+      var l = document.getElementById('loader');
+      if (l && !l.classList.contains('done')) {
+        l.classList.add('done');
+        document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
+      }
+    }, 3500);
+  </script>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
