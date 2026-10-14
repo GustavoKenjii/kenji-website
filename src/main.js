@@ -206,11 +206,10 @@ document.querySelectorAll('.sess-card').forEach(card => {
   if (!film || typeof film.play !== 'function') return
   const url = film.dataset.src
   if (!url) return
-  let live = false
+  let live = false, srcSet = false
   film.muted = true // required for autoplay; user enables sound via button
   film.volume = 1
-  film.src = url
-  film.load()
+  film.preload = 'none' // src assigned only near viewport — keeps initial load fast
   const syncBtn = () => { if (t) t.textContent = film.muted ? 'SOUND OFF' : 'SOUND ON' }
   syncBtn()
   const killFilm = () => {
@@ -226,9 +225,10 @@ document.querySelectorAll('.sess-card').forEach(card => {
   new IntersectionObserver(([e]) => {
     if (!film.isConnected) return
     if (e.isIntersecting) {
+      if (!srcSet) { srcSet = true; film.src = url; film.load(); }
       if (!reduceMotion && !card.classList.contains('held')) film.play().catch(() => {})
     } else film.pause()
-  }, { rootMargin: '200px' }).observe(card)
+  }, { rootMargin: '400px' }).observe(card)
   card.addEventListener('click', e => {
     if (e.target.closest('.sess-toggle')) return // button handles sound only
     // no 'live' gate: taps are user gestures, so play() works even where autoplay is blocked
