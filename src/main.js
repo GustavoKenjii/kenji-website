@@ -237,22 +237,23 @@ document.querySelectorAll('.sess-card').forEach(card => {
   if (!film || typeof film.play !== 'function') return
   const url = film.dataset.src
   if (!url) return
-  let live = false, srcSet = false
+  let live = false, srcSet = false, soundOn = false
   film.muted = true // required for autoplay; user enables sound via button
   film.volume = 1
   film.preload = 'none' // src assigned only near viewport — keeps initial load fast
-  const syncBtn = () => {
+  const renderBtn = () => {
     if (!t) return
     const on = t.querySelector('.ic-on'), off = t.querySelector('.ic-off')
     if (on && off) {
-      on.hidden = film.muted
-      off.hidden = !film.muted
-      t.setAttribute('aria-label', film.muted ? 'Turn sound on' : 'Turn sound off')
+      // inline styles: immune to stylesheet/cascade issues
+      on.style.display = soundOn ? 'block' : 'none'
+      off.style.display = soundOn ? 'none' : 'block'
+      t.setAttribute('aria-label', soundOn ? 'Turn sound off' : 'Turn sound on')
     } else {
-      t.textContent = film.muted ? 'SOUND OFF' : 'SOUND ON'
+      t.textContent = soundOn ? 'SOUND ON' : 'SOUND OFF'
     }
   }
-  syncBtn()
+  renderBtn()
   const killFilm = () => {
     live = false
     card.classList.remove('is-live')
@@ -279,9 +280,12 @@ document.querySelectorAll('.sess-card').forEach(card => {
   if (t) t.addEventListener('pointerdown', e => {
     e.stopPropagation()
     e.preventDefault()
-    film.muted = !film.muted
-    if (!film.muted && film.paused) film.play().catch(() => {})
-    syncBtn()
+    soundOn = !soundOn
+    try {
+      film.muted = !soundOn
+      if (soundOn && film.paused) film.play().catch(() => {})
+    } catch (err) {}
+    renderBtn()
   })
 })
 
