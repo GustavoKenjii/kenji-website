@@ -285,7 +285,8 @@ section{padding:0 var(--pad)}
 .g-cta{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 0 8px}
 .g-cta .pill-light{display:inline-block;border:1px solid var(--paper);color:var(--paper);border-radius:999px;padding:17px 34px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;transition:background .3s,color .3s}
 .g-cta .pill-light:hover{background:var(--paper);color:var(--ink)}
-.g-cta-note{font-size:10px;color:rgba(242,239,233,.6);text-decoration:underline;text-underline-offset:3px;text-align:center;max-width:26em;line-height:1.7}
+.g-cta-note{font-size:10px;color:rgba(242,239,233,.6);text-decoration:underline;text-underline-offset:3px;text-align:center;line-height:1.7;white-space:nowrap}
+@media (max-width:520px){.g-cta-note{white-space:normal;max-width:26em}}
 @media (hover:none){
   .g-card:hover .g-side.is-front{transform:none}
   .g-card:hover .g-side.is-back{transform:rotateY(180deg)}
