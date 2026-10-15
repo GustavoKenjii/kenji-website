@@ -279,6 +279,9 @@ section{padding:0 var(--pad)}
 .g-card:hover .g-side.is-back,.g-card.flipped .g-side.is-back{transform:rotateY(0)}
 .g-side img{width:100%;height:100%;object-fit:cover;display:block}
 .g-card figcaption{padding:10px 2px 0;color:var(--muted)}
+.g-cta{display:flex;justify-content:center;padding:24px 0 8px}
+.g-cta .pill-light{display:inline-block;border:1px solid var(--paper);color:var(--paper);border-radius:999px;padding:13px 24px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;transition:background .3s,color .3s}
+.g-cta .pill-light:hover{background:var(--paper);color:var(--ink)}
 @media (hover:none){
   .g-card:hover .g-side.is-front{transform:none}
   .g-card:hover .g-side.is-back{transform:rotateY(180deg)}
