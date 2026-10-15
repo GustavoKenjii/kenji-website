@@ -269,7 +269,7 @@ section{padding:0 var(--pad)}
 .sess-toggle svg{width:16px;height:16px;display:block}
 .sess-toggle svg[hidden]{display:none}
 .sess-controls{display:inline-flex;align-items:center;gap:10px}
-.sess-vol{width:90px;accent-color:var(--accent);cursor:pointer}
+.sess-vol{width:90px;accent-color:var(--paper);cursor:pointer}
 @media (hover:none){.sess-vol{display:none}}
 
 /* gallery — 4-col staggered flip grid */
