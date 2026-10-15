@@ -268,6 +268,9 @@ section{padding:0 var(--pad)}
 .sess-toggle{border:1px solid currentColor;border-radius:999px;padding:8px 16px;font-size:10px;flex:0 0 auto;display:inline-flex;align-items:center;touch-action:manipulation;cursor:pointer}
 .sess-toggle svg{width:16px;height:16px;display:block}
 .sess-toggle svg[hidden]{display:none}
+.sess-controls{display:inline-flex;align-items:center;gap:10px}
+.sess-vol{width:90px;accent-color:var(--accent);cursor:pointer}
+@media (hover:none){.sess-vol{display:none}}
 
 /* gallery — 4-col staggered flip grid */
 .gallery{background:var(--ink);color:var(--paper);border-radius:0;margin-top:0;padding-bottom:32px}

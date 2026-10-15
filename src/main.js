@@ -273,6 +273,7 @@ document.querySelectorAll('.sess-card').forEach(card => {
   }, { rootMargin: '400px' }).observe(card)
   card.addEventListener('click', e => {
     if (e.target.closest('.sess-toggle')) return // button handles sound only
+    if (e.target.closest('.sess-vol')) return // slider handles volume only
     // no 'live' gate: taps are user gestures, so play() works even where autoplay is blocked
     if (film.paused) { card.classList.remove('held'); film.play().catch(() => {}) }
     else { card.classList.add('held'); film.pause() }
@@ -284,6 +285,21 @@ document.querySelectorAll('.sess-card').forEach(card => {
     try {
       film.muted = !soundOn
       if (soundOn && film.paused) film.play().catch(() => {})
+    } catch (err) {}
+    renderBtn()
+  })
+  const vol = card.querySelector('.sess-vol')
+  if (vol) vol.addEventListener('input', () => {
+    const v = +vol.value
+    try {
+      film.volume = v / 100
+      if (v > 0) {
+        soundOn = true
+        film.muted = false
+        if (film.paused) film.play().catch(() => {})
+      } else {
+        soundOn = false
+      }
     } catch (err) {}
     renderBtn()
   })
