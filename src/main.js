@@ -3,7 +3,6 @@ import Lenis from 'lenis'
 // ---------- smooth scroll + single unified rAF (was 3 separate loops) ----------
 const lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1.0 })
 const reduceMotionMain = matchMedia('(prefers-reduced-motion: reduce)').matches
-const isFinePointer = matchMedia('(hover: hover) and (pointer: fine)').matches
 
 // anchor scrolling through lenis
 document.querySelectorAll('[data-scroll]').forEach(a => {
@@ -119,31 +118,12 @@ window.addEventListener('scroll', () => {
   lastY = y
 }, { passive: true })
 
-// ---------- cursor (transform-only, updated inside main loop) ----------
-const cur = document.getElementById('cursor')
-let cx = -100, cy = -100, tx = -100, ty = -100, curX = -101, curY = -101
-if (cur && !isFinePointer) cur.style.display = 'none'
-window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY }, { passive: true })
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cur && cur.classList.add('big'))
-  el.addEventListener('mouseleave', () => cur && cur.classList.remove('big'))
-})
-
 let lastAppliedY = -1
 let lastAppliedSmooth = 0
 
 function loop(time) {
   lenis.raf(time)
   if (document.hidden) { requestAnimationFrame(loop); return }
-
-  // cursor — cheap lerp, skip DOM write when settled
-  if (cur && isFinePointer) {
-    cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2
-    if (Math.abs(cx - curX) > 0.1 || Math.abs(cy - curY) > 0.1) {
-      curX = cx; curY = cy
-      cur.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`
-    }
-  }
 
   smooth += (vel - smooth) * 0.08
   vel *= 0.92
