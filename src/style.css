@@ -328,7 +328,6 @@ section{padding:0 var(--pad)}
   .g-card:nth-child(4n+2),.g-card:nth-child(4n+3),.g-card:nth-child(4n+4){margin-top:0}
   .g-card:nth-child(even){margin-top:20px}
   .foot-grid{grid-template-columns:1fr;align-items:center;justify-items:center}
-  .mf-soc a:last-child{display:none}
   .menu-foot{justify-content:center;flex-direction:column;align-items:center;gap:8px;text-align:center}
   .foot-base{justify-content:center;text-align:center}
   .spotify-grid{grid-template-columns:1fr}
