@@ -265,7 +265,7 @@ section{padding:0 var(--pad)}
 .sess-card:has(.session-film){cursor:pointer}
 .sess-card figcaption{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
   gap:10px;padding:12px 14px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff}
-.sess-toggle{border:1px solid currentColor;border-radius:999px;padding:6px 14px;font-size:10px;flex:0 0 auto;display:inline-flex;align-items:center}
+.sess-toggle{border:1px solid currentColor;border-radius:999px;padding:8px 16px;font-size:10px;flex:0 0 auto;display:inline-flex;align-items:center;touch-action:manipulation;cursor:pointer}
 .sess-toggle svg{width:16px;height:16px;display:block}
 .sess-toggle svg[hidden]{display:none}
 

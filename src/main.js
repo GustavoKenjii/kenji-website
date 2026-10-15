@@ -276,8 +276,9 @@ document.querySelectorAll('.sess-card').forEach(card => {
     if (film.paused) { card.classList.remove('held'); film.play().catch(() => {}) }
     else { card.classList.add('held'); film.pause() }
   })
-  if (t) t.addEventListener('click', e => {
+  if (t) t.addEventListener('pointerdown', e => {
     e.stopPropagation()
+    e.preventDefault()
     film.muted = !film.muted
     if (!film.muted && film.paused) film.play().catch(() => {})
     syncBtn()
