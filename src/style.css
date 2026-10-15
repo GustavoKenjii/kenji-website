@@ -291,6 +291,8 @@ section{padding:0 var(--pad)}
 .mail-big{display:block;font-family:var(--disp);font-size:clamp(48px,7vw,110px);line-height:1;padding:12px 0 24px;text-align:center;letter-spacing:0;cursor:default}
 .book-label{font-size:clamp(16px,2vw,22px)}
 .book-mail{font-size:clamp(16px,2vw,22px);text-decoration:underline;text-underline-offset:4px}
+.footer .pill-light{display:inline-block;border:1px solid var(--paper);color:var(--paper);border-radius:999px;padding:13px 24px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;justify-self:center;transition:background .3s,color .3s}
+.footer .pill-light:hover{background:var(--paper);color:var(--ink)}
 .foot-socials{display:flex;justify-content:center;align-items:center;gap:28px}
 .foot-socials a{display:inline-flex;width:30px;height:30px;color:#fff;transition:color .25s,transform .25s}
 .foot-socials a:hover{color:var(--accent);transform:translateY(-2px)}
