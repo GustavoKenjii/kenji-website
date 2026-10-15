@@ -241,7 +241,17 @@ document.querySelectorAll('.sess-card').forEach(card => {
   film.muted = true // required for autoplay; user enables sound via button
   film.volume = 1
   film.preload = 'none' // src assigned only near viewport — keeps initial load fast
-  const syncBtn = () => { if (t) t.textContent = film.muted ? 'SOUND OFF' : 'SOUND ON' }
+  const syncBtn = () => {
+    if (!t) return
+    const on = t.querySelector('.ic-on'), off = t.querySelector('.ic-off')
+    if (on && off) {
+      on.hidden = film.muted
+      off.hidden = !film.muted
+      t.setAttribute('aria-label', film.muted ? 'Turn sound on' : 'Turn sound off')
+    } else {
+      t.textContent = film.muted ? 'SOUND OFF' : 'SOUND ON'
+    }
+  }
   syncBtn()
   const killFilm = () => {
     live = false

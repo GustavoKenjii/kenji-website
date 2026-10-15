@@ -254,6 +254,7 @@ section{padding:0 var(--pad)}
 .sess-intro{font-size:16px;line-height:1.6;color:rgba(242,239,233,.75);max-width:none;padding:20px 0 18px;white-space:nowrap}
 .sessions .pill-light{display:inline-block;border:1px solid var(--paper);color:var(--paper);border-radius:999px;padding:13px 24px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;margin-bottom:30px;transition:background .3s,color .3s}
 .sessions .pill-light:hover{background:var(--paper);color:var(--ink)}
+.sess-note{padding:16px 0 4px;color:rgba(242,239,233,.6);text-align:center}
 .lavenue .pill-light{display:inline-block;border:1px solid var(--paper);color:var(--paper);border-radius:999px;padding:13px 24px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;margin-top:12px;align-self:flex-start;transition:background .3s,color .3s}
 .lavenue .pill-light:hover{background:var(--paper);color:var(--ink)}
 .sess-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(14px,2.5vw,32px)}
@@ -264,7 +265,8 @@ section{padding:0 var(--pad)}
 .sess-card:has(.session-film){cursor:pointer}
 .sess-card figcaption{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
   gap:10px;padding:12px 14px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff}
-.sess-toggle{border:1px solid currentColor;border-radius:999px;padding:6px 14px;font-size:10px;flex:0 0 auto}
+.sess-toggle{border:1px solid currentColor;border-radius:999px;padding:6px 14px;font-size:10px;flex:0 0 auto;display:inline-flex;align-items:center}
+.sess-toggle svg{width:16px;height:16px;display:block}
 
 /* gallery — 4-col staggered flip grid */
 .gallery{background:var(--ink);color:var(--paper);border-radius:0;margin-top:0;padding-bottom:32px}
